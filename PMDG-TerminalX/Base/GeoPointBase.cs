@@ -16,9 +16,9 @@ namespace PMDG_TerminalX.Base
             set
             {
                 if (value.Degrees < 0)
-                    DecimalValue = -(value.Seconds / 3600) - (value.Minutes / 60) + value.Degrees;
+                    DecimalValue = decimal.Round( -(value.Seconds / 3600M) - (value.Minutes / 60M) + value.Degrees, 6);
                 else
-                    DecimalValue = (value.Seconds / 3600) + (value.Minutes / 60) + value.Degrees;
+                    DecimalValue = decimal.Round((value.Seconds / 3600M) + (value.Minutes / 60M) + value.Degrees, 6);
             }
         }
         public decimal DecimalValue
