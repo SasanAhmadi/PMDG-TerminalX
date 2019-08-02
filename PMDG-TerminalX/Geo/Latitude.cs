@@ -22,9 +22,14 @@ namespace PMDG_TerminalX.Geo
         }
 
         public NorthSouth NSHemisphere { get; private set; }
-        public override string ToString()
+        public override string ToDmsString()
         {
-            return base.ToString() + (_decimalValue < 0 ? "S" : "N");
+            return base.ToDmsString() + (_decimalValue < 0 ? "S" : "N");
+        }
+
+        public override string ToDdString()
+        {
+            return (_decimalValue < 0 ? "S " : "N ") + base.ToDdString();
         }
     }
 }
