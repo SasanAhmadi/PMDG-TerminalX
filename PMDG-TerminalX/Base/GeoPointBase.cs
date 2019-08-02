@@ -6,7 +6,6 @@ namespace PMDG_TerminalX.Base
 {
     public abstract class GeoPointBase
     {
-        protected event EventHandler<decimal> IdentifyHemisphereEvent;
         protected (int Degrees, int Minutes, decimal Seconds) _dmsValue;
         protected decimal _decimalValue;
         protected (int Degrees, decimal Seconds) _ddValue;
@@ -20,8 +19,6 @@ namespace PMDG_TerminalX.Base
                     DecimalValue = -(value.Seconds / 3600) - (value.Minutes / 60) + value.Degrees;
                 else
                     DecimalValue = (value.Seconds / 3600) + (value.Minutes / 60) + value.Degrees;
-
-                IdentifyHemisphereEvent(this, _decimalValue);
             }
         }
         public decimal DecimalValue
@@ -37,8 +34,6 @@ namespace PMDG_TerminalX.Base
                 _ddValue.Seconds = decimal.Round((value - decimal.Truncate(value)) * 60, 6);
 
                 _decimalValue = value;
-
-                IdentifyHemisphereEvent(this, _decimalValue);
             }
         }
 

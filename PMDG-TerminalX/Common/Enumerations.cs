@@ -15,4 +15,25 @@ namespace PMDG_TerminalX.Common
         East = 0,
         West = 1
     }
+
+    public static class EnumerationUtilities
+    {
+        public static string ShortRepresentation(this NorthSouth e)
+        {
+            switch (e)
+            {
+                case NorthSouth.North: return "N";
+                default: return "S";
+            }
+        }
+
+        public static string ShortRepresentation(this EasthWest e)
+        {
+            switch (e)
+            {
+                case EasthWest.East: return "E";
+                default: return "W";
+            }
+        }
+    }
 }
