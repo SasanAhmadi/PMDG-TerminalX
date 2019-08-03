@@ -10,9 +10,14 @@ namespace PMDG_TerminalX.Geo
     {
         public EasthWest EWHemisphere => _decimalValue < 0 ? EasthWest.West : EasthWest.East;
 
-        public override string ToString()
+        public override string ToDmsString()
         {
-            return base.ToString() + EWHemisphere.ShortRepresentation();
+            return base.ToDmsString() + EWHemisphere.ShortRepresentation();
+        }
+
+        public override string ToDdString()
+        {
+            return EWHemisphere.ShortRepresentation() + " " + base.ToDdString();
         }
     }
 }

@@ -13,10 +13,10 @@ namespace PMDG_TerminalX.Base
         public (int Degrees, int Minutes, decimal Seconds) DMS
         {
             get { return _dmsValue; }
-            set
+            protected set
             {
                 if (value.Degrees < 0)
-                    DecimalValue = decimal.Round( -(value.Seconds / 3600M) - (value.Minutes / 60M) + value.Degrees, 6);
+                    DecimalValue = decimal.Round(value.Degrees - (value.Seconds / 3600M) - (value.Minutes / 60M), 6);
                 else
                     DecimalValue = decimal.Round((value.Seconds / 3600M) + (value.Minutes / 60M) + value.Degrees, 6);
             }
@@ -26,12 +26,12 @@ namespace PMDG_TerminalX.Base
             get { return _decimalValue; }
             set
             {
-                _dmsValue.Degrees = (int)decimal.Truncate(value);
-                _dmsValue.Minutes = (int)decimal.Truncate((value - decimal.Truncate(value)) * 60);
-                _dmsValue.Seconds = decimal.Round((((value - decimal.Truncate(value)) * 60) - DMS.Minutes) * 60, 1);
+                _dmsValue.Degrees = Math.Abs((int)decimal.Truncate(value));
+                _dmsValue.Minutes = Math.Abs((int)decimal.Truncate((Math.Abs(value) - Math.Abs(decimal.Truncate(value))) * 60M));
+                _dmsValue.Seconds = Math.Abs(decimal.Round(((Math.Abs(value) - Math.Abs(decimal.Truncate(value))) * 60M - DMS.Minutes) * 60M, 1));
 
-                _ddValue.Degrees = (int)decimal.Truncate(value);
-                _ddValue.Seconds = decimal.Round((value - decimal.Truncate(value)) * 60, 6);
+                _ddValue.Degrees = Math.Abs((int)decimal.Truncate(value));
+                _ddValue.Seconds = Math.Abs(decimal.Round((Math.Abs(value) - Math.Abs(decimal.Truncate(value))) * 60M, 6));
 
                 _decimalValue = value;
             }
@@ -40,8 +40,12 @@ namespace PMDG_TerminalX.Base
         public (int Degrees, decimal Seconds) DD
         {
             get { return _ddValue; }
-            set {
-                DecimalValue = decimal.Round(value.Seconds / 60M, 6) + value.Degrees;
+            protected set
+            {
+                if (value.Degrees < 0)
+                    DecimalValue = decimal.Round(-(value.Seconds / 60M) - value.Degrees, 6);
+                else
+                    DecimalValue = decimal.Round((value.Seconds / 60M) + value.Degrees, 6);
             }
         }
 
