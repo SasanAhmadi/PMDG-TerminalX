@@ -1,3 +1,4 @@
+using PMDG_TerminalX.Common;
 using PMDG_TerminalX.Geo;
 using System;
 using Xunit;
@@ -34,7 +35,7 @@ namespace TestProject
         public void AssignDdValueCheckForCorrectDecimal()
         {
             var latitude = new Latitude();
-            latitude.DD = (35, 41.818320M);
+            latitude.SetDdPoint(35, 41.818320M, NorthSouth.North);
             Assert.Equal(35.696972M, latitude.DecimalValue);
         }
 
@@ -42,8 +43,69 @@ namespace TestProject
         public void AssignDmsValueCheckForCorrectDecimal()
         {
             var latitude = new Latitude();
-            latitude.DMS = (35, 41, 49.1M);
+            latitude.SetDmsPoint(35, 41, 49.1M, NorthSouth.North);
             Assert.Equal(35.696972M, latitude.DecimalValue);
+        }
+
+        [Fact]
+        public void AssignNegativeValueCheckForCorrectDms()
+        {
+            var longitude = new Longitude();
+            longitude.DecimalValue = -122.309617M;
+            Assert.Equal("122°18'34.6\"W", longitude.ToDmsString());
+        }
+
+        [Fact]
+        public void AssignDecimalValueCheckForExactNumber()
+        {
+            var latitude = new Latitude();
+            latitude.DecimalValue = -122.309617M;
+            Assert.Equal(-122.309617M, latitude.DecimalValue);
+        }
+
+        [Fact]
+        public void AssignDmsLatitiudeNorthDmsValueCheckForDecimal()
+        {
+            var latitude = new Latitude();
+            latitude.SetDmsPoint(35,41,49.1M, NorthSouth.North);
+            Assert.Equal(35.696972M, latitude.DecimalValue);
+            Assert.Equal(NorthSouth.North, latitude.NSHemisphere);
+        }
+
+        [Fact]
+        public void AssignDmsLatitiudeSouthDmsValueCheckForDecimal()
+        {
+            var latitude = new Latitude();
+            latitude.SetDmsPoint(18, 48, 12.0M, NorthSouth.South);
+            Assert.Equal(-18.803333M, latitude.DecimalValue);
+            Assert.Equal(NorthSouth.South, latitude.NSHemisphere);
+        }
+
+        [Fact]
+        public void AssignDmsLatitiudeSouthDmsValueCheckForDms()
+        {
+            var latitude = new Latitude();
+            latitude.SetDmsPoint(18, 48, 12.0M, NorthSouth.South);
+            Assert.Equal((18, 48, 12.0M), latitude.DMS);
+            Assert.Equal(NorthSouth.South, latitude.NSHemisphere);
+        }
+
+        [Fact]
+        public void AssignDmsLatitiudeNorthDmsValueCheckForDd()
+        {
+            var latitude = new Latitude();
+            latitude.SetDmsPoint(35, 41, 49.1M, NorthSouth.North);
+            Assert.Equal((35, 41.818320M), latitude.DD);
+            Assert.Equal(NorthSouth.North, latitude.NSHemisphere);
+        }
+
+        [Fact]
+        public void AssignDmsLatitiudeSouthDmsValueCheckForDd()
+        {
+            var latitude = new Latitude();
+            latitude.SetDmsPoint(18, 48, 12.0M, NorthSouth.South);
+            Assert.Equal((18, 48.199980M), latitude.DD);
+            Assert.Equal(NorthSouth.South, latitude.NSHemisphere);
         }
     }
 }
