@@ -8,6 +8,10 @@ namespace PMDG_TerminalX.Geo
 {
     public class Latitude : GeoPointBase
     {
+        public Latitude() { }
+
+        public Latitude(decimal location) : base(location) { }
+
         public NorthSouth NSHemisphere => _decimalValue < 0 ? NorthSouth.South : NorthSouth.North;
 
         

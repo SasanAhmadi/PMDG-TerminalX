@@ -10,6 +10,16 @@ namespace PMDG_TerminalX.Base
         protected decimal _decimalValue;
         protected (int Degrees, decimal Seconds) _ddValue;
 
+        public GeoPointBase()
+        {
+
+        }
+
+        public GeoPointBase(decimal location)
+        {
+            DecimalValue = location;
+        }
+
         public (int Degrees, int Minutes, decimal Seconds) DMS
         {
             get { return _dmsValue; }
