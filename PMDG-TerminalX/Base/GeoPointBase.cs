@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.Base
 {
-    public abstract class GeoPointBase
+    internal abstract class GeoPointBase
     {
         protected (int Degrees, int Minutes, decimal Seconds) _dmsValue;
         protected decimal _decimalValue;

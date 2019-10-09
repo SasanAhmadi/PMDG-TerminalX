@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.NavAid
 {
-    class Gate
+    internal class Gate
     {
     }
 }
