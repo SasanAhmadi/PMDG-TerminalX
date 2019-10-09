@@ -107,5 +107,14 @@ namespace TestProject
             Assert.Equal((18, 48.199980M), latitude.DD);
             Assert.Equal(NorthSouth.South, latitude.NSHemisphere);
         }
+
+        [Fact]
+        public void CheckGeoLocationDmsStringOutput()
+        {
+            var geoLocation = new GeoLocation(35.410179m, 51.155586m);
+            Assert.Equal("35°24'36.6\"N 51°09'20.1\"E", geoLocation.ToDmsString());
+
+
+        }
     }
 }
