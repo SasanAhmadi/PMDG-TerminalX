@@ -61,7 +61,7 @@ namespace PMDG_TerminalX.Base
 
         public virtual string ToDmsString()
         {
-            return _dmsValue.Degrees.ToString("0;0;0") + "°" + _dmsValue.Minutes.ToString("0;0;0") + "'" + _dmsValue.Seconds.ToString("00.0;00.0;00.0") + "\"";
+            return _dmsValue.Degrees.ToString("0;0;0") + "°" + _dmsValue.Minutes.ToString("00;00;00") + "'" + _dmsValue.Seconds.ToString("00.0;00.0;00.0") + "\"";
         }
 
         public virtual string ToDdString()
