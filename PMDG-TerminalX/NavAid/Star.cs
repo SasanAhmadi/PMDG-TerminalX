@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.NavAid
 {
-    internal class Star
+    class Star
     {
     }
 }

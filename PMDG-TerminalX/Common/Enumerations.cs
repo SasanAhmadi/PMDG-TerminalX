@@ -4,19 +4,19 @@ using System.Text;
 
 namespace PMDG_TerminalX.Common
 {
-    internal enum NorthSouth
+    public enum NorthSouth
     {
         North = 0,
         South = 1
     }
 
-    internal enum EasthWest
+    public enum EasthWest
     {
         East = 0,
         West = 1
     }
 
-    internal static class EnumerationUtilities
+    public static class EnumerationUtilities
     {
         public static string ShortRepresentation(this NorthSouth e)
         {

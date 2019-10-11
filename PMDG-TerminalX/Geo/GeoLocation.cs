@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.Geo
 {
-    internal class GeoLocation
+    public class GeoLocation
     {
         public GeoLocation()
         {
@@ -22,14 +22,9 @@ namespace PMDG_TerminalX.Geo
 
         public Longitude Longitude { get; set; }
 
-        public string ToDmsString()
+        public override string ToString()
         {
-            return Latitude.ToDmsString() + " " + Longitude.ToDmsString();
-        }
-
-        public string ToDdString()
-        {
-            return Latitude.ToDdString() + " " + Longitude.ToDdString();
+            return Latitude.ToString() + " " + Longitude.ToString();
         }
     }
 }

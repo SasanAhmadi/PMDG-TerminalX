@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.Geo
 {
-    internal class Latitude : GeoPointBase
+    public class Latitude : GeoPointBase
     {
         public Latitude() { }
 

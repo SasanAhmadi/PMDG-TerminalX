@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.Geo
 {
-    internal class Longitude : GeoPointBase
+    public class Longitude : GeoPointBase
     {
         public Longitude() { }
 

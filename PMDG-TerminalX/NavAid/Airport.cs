@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PMDG_TerminalX.NavAid
 {
-    internal class Airport
+    class Airport
     {
         public string Description { get; set; }
 
