@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PMDG_TerminalX.Geo
+﻿namespace PMDG_TerminalX.Geo
 {
     public class GeoLocation
     {
@@ -22,9 +18,15 @@ namespace PMDG_TerminalX.Geo
 
         public Longitude Longitude { get; set; }
 
-        public override string ToString()
+        public string ToDmsString()
         {
-            return Latitude.ToString() + " " + Longitude.ToString();
+
+            return Latitude.ToDmsString() + " " + Longitude.ToDmsString();
+        }
+
+        public string ToDdString()
+        {
+            return Latitude.ToDdString() + " " + Longitude.ToDdString();
         }
     }
 }
