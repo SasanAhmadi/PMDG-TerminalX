@@ -3,7 +3,7 @@ using PMDG_TerminalX.Geo;
 using System;
 using Xunit;
 
-namespace TestProject
+namespace TerminalXTest
 {
     public class GeoPointUnitTest
     {
