@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PMDG_TerminalX.NavAid
+namespace PMDGTerminalX.NavAid
 {
-    class Approach
+    public class Approach
     {
     }
 }

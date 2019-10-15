@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PMDG_TerminalX.Common
+namespace PMDGTerminalX.Common
 {
     public enum NorthSouth
     {
@@ -16,6 +16,11 @@ namespace PMDG_TerminalX.Common
         West = 1
     }
 
+    public enum GeoStringFormat
+    { 
+        DMS = 0,
+        DD  = 1
+    }
     public static class EnumerationUtilities
     {
         public static string ShortRepresentation(this NorthSouth e)

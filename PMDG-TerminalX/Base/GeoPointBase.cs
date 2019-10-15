@@ -1,8 +1,10 @@
-﻿using System;
+﻿using PMDGTerminalX.Common;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
-namespace PMDG_TerminalX.Base
+namespace PMDGTerminalX.Base
 {
     public abstract class GeoPointBase
     {
@@ -10,6 +12,7 @@ namespace PMDG_TerminalX.Base
         protected decimal _decimalValue;
         protected (int Degrees, decimal Seconds) _ddValue;
 
+        #region Constructors
         public GeoPointBase()
         {
 
@@ -19,6 +22,7 @@ namespace PMDG_TerminalX.Base
         {
             DecimalValue = location;
         }
+        #endregion
 
         public (int Degrees, int Minutes, decimal Seconds) DMS
         {
@@ -53,20 +57,21 @@ namespace PMDG_TerminalX.Base
             protected set
             {
                 if (value.Degrees < 0)
-                    DecimalValue = decimal.Round(-(value.Seconds / 60M) - value.Degrees, 6);
+                    DecimalValue = decimal.Round(value.Degrees - (value.Seconds / 60M), 6);
                 else
-                    DecimalValue = decimal.Round((value.Seconds / 60M) + value.Degrees, 6);
+                    DecimalValue = decimal.Round(value.Degrees + (value.Seconds / 60M), 6);
+                _ddValue = value;
             }
         }
 
         public virtual string ToDmsString()
         {
-            return _dmsValue.Degrees.ToString("0;0;0") + "°" + _dmsValue.Minutes.ToString("00;00;00") + "'" + _dmsValue.Seconds.ToString("00.0;00.0;00.0") + "\"";
+            return _dmsValue.Degrees.ToString("0;0;0", CultureInfo.InvariantCulture) + "°" + _dmsValue.Minutes.ToString("00;00;00", CultureInfo.InvariantCulture) + "'" + _dmsValue.Seconds.ToString("00.0;00.0;00.0", CultureInfo.InvariantCulture) + "\"";
         }
 
         public virtual string ToDdString()
         {
-            return _ddValue.Degrees.ToString("0;0;0") + " " + _ddValue.Seconds.ToString("0.000000;0.000000;0.000000");
+            return _ddValue.Degrees.ToString("0;0;0", CultureInfo.InvariantCulture) + " " + _ddValue.Seconds.ToString("0.######;0.#######;0", CultureInfo.InvariantCulture);
         }
     }
 }

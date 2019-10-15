@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMDG-TerminalX", "PMDG-TerminalX\PMDG-TerminalX.csproj", "{E81C4FF0-6CD4-4CAE-AE24-7015D590C059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PMDGTerminalX", "PMDG-TerminalX\PMDGTerminalX.csproj", "{E81C4FF0-6CD4-4CAE-AE24-7015D590C059}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "TestConsole\TestConsole.csproj", "{D4E4D2EB-C766-4972-AD1C-832687E5DE85}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TerminalX-Test", "TestProject\TerminalX-Test.csproj", "{D58A79E8-1CFB-42BB-A7CD-81698B6FC357}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TerminalXTest", "TestProject\TerminalXTest.csproj", "{D58A79E8-1CFB-42BB-A7CD-81698B6FC357}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

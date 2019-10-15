@@ -1,12 +1,14 @@
-using PMDG_TerminalX.Common;
-using PMDG_TerminalX.Geo;
+ï»¿using PMDGTerminalX.Common;
+using PMDGTerminalX.Geo;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using Xunit;
 
 namespace TerminalXTest
 {
-    public class GeoPointUnitTest
-    {
+    public class LatitudeTest
+    {   
         [Fact]
         public void AssignDecimalValueCheckForCorrectConversionToDmsAndDd()
         {
@@ -20,7 +22,7 @@ namespace TerminalXTest
         {
             var latitude = new Latitude();
             latitude.DecimalValue = 35.696972M;
-            Assert.Equal("35°41'49.1\"N", latitude.ToDmsString());
+            Assert.Equal("35Â°41'49.1\"N", latitude.ToDmsString());
         }
 
         [Fact]
@@ -28,7 +30,7 @@ namespace TerminalXTest
         {
             var latitude = new Latitude();
             latitude.DecimalValue = 35.696972M;
-            Assert.Equal("N 35 41.818320", latitude.ToDdString());
+            Assert.Equal("N 35 41.81832", latitude.ToDdString());
         }
 
         [Fact]
@@ -48,14 +50,6 @@ namespace TerminalXTest
         }
 
         [Fact]
-        public void AssignNegativeValueCheckForCorrectDms()
-        {
-            var longitude = new Longitude();
-            longitude.DecimalValue = -122.309617M;
-            Assert.Equal("122°18'34.6\"W", longitude.ToDmsString());
-        }
-
-        [Fact]
         public void AssignDecimalValueCheckForExactNumber()
         {
             var latitude = new Latitude();
@@ -67,7 +61,7 @@ namespace TerminalXTest
         public void AssignDmsLatitiudeNorthDmsValueCheckForDecimal()
         {
             var latitude = new Latitude();
-            latitude.SetDmsPoint(35,41,49.1M, NorthSouth.North);
+            latitude.SetDmsPoint(35, 41, 49.1M, NorthSouth.North);
             Assert.Equal(35.696972M, latitude.DecimalValue);
             Assert.Equal(NorthSouth.North, latitude.NSHemisphere);
         }
@@ -109,12 +103,25 @@ namespace TerminalXTest
         }
 
         [Fact]
-        public void CheckGeoLocationDmsStringOutput()
+        public void AssignNegativeValueCheckForCorrectDms()
         {
-            var geoLocation = new GeoLocation(35.410179m, 51.155586m);
-            Assert.Equal("35°24'36.6\"N 51°09'20.1\"E", geoLocation.ToDmsString());
+            var latitude = new Latitude();
+            latitude.DecimalValue = -33.969672M;
+            Assert.Equal("33Â°58'10.8\"S", latitude.ToDmsString());
+        }
 
+        [Fact]
+        public void CreateLatitudeFromDDString()
+        {
+            var latitude = new Latitude("N 35 41.818320", GeoStringFormat.DD);
+            Assert.Equal("N 35 41.81832", latitude.ToDdString());
+        }
 
+        [Fact]
+        public void CreateLatitudeFromDDString2()
+        {
+            var latitude = new Latitude("N 37 37.169167", GeoStringFormat.DD);
+            Assert.Equal("37Â°37'10.1\"N", latitude.ToDmsString());
         }
     }
 }
